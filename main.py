@@ -272,11 +272,15 @@ def main():
             print(birthdays(book))
 
         elif command == "remove-phone":
-            name, phone_number = args
-            if record := book.find(name):
-                record.remove_phone(phone_number)
+            if len(args) != 2:
+                print("Missing arguments. Provide name and phone number to remove.")
+                continue
             else:
-                print("Contact not found")
+                name, phone_number = args
+                if record := book.find(name):
+                    record.remove_phone(phone_number)
+                else:
+                    print("Contact not found")
 
         else:
             print("Invalid command.")
